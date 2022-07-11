@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   db:
@@ -12,16 +12,14 @@ services:
     ports:
       - "15432:5432"
 
-
   pgadmin:
-      container_name: pgres_pgadmin
-      image: "dpage/pgadmin4:6.11"
-      environment:
-        PGADMIN_DEFAULT_EMAIL: admin
-        PGADMIN_DEFAULT_PASSWORD: admin
-        PGADMIN_CONFIG_SERVER_MODE: "False"
-        PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
-      ports:
+    container_name: pgres_pgadmin
+    image: "dpage/pgadmin4:6.11"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+    ports:
       - "15433:80"
-      restart: unless-stopped
-
+    restart: unless-stopped
