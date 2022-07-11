@@ -2,6 +2,7 @@ package routers
 
 import (
 	"zerodha-clone/middleware"
+
 	"github.com/gorilla/mux"
 )
 
@@ -13,4 +14,5 @@ func Router() *mux.Router{
 	router.HandleFunc("/api/newStock", middleware.CreateStock).Methods("POST", "OPTIONS")
 	router.HandleFunc("/api/stock/{id}", middleware.UpdateStock).Methods("PUT", "OPTIONS")
 	router.HandleFunc("/api/stock/{id}", middleware.DeleteStock).Methods("DELETE", "OPTIONS")
+	return router
 }
