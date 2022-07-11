@@ -69,7 +69,7 @@ func GetStock(w http.ResponseWriter, r *http.Request){
 func GetAllStock(w http.ResponseWriter, r *http.Request){
 	stocks, err := getAllStock()
 	if err != nil {
-		log.Fatal("Unable to get Stock. %v", err)
+		log.Fatalf("Unable to get Stock. %v", err)
 	}
 	json.NewEncoder(w).Encode(stocks)
 }
@@ -163,7 +163,7 @@ func getAllStock()([]models.Stock, error) {
 	rows,err := db.Query(sqlStatement)
 
 	if err != nil {
-		log.Fatal("Error in executing the Query. %v", err)
+		log.Fatalf("Error in executing the Query. %v", err)
 	}
 
 	defer rows.Close()
