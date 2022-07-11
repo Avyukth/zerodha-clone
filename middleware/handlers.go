@@ -25,17 +25,17 @@ func CreateConnection() *sql.DB {
 	if err != nil {
 		log.Fatalf("Error loading .env file")
 	}
-
+	fmt.Println("Connecting to database...", os.Getenv("POSTGRES_DSN_URL"))
 	db, err := sql.Open("postgres", os.Getenv("POSTGRES_DSN_URL"))
 	if err != nil {
 		log.Fatal("Error getting db connection ............")
 		panic(err)
 	}
-	err = db.Ping()
-	if err != nil {
-		log.Fatal("Error getting db connection ............in ping")
-		panic(err)
-	}
+	// err = db.Ping()
+	// if err != nil {
+	// 	log.Fatal("Error getting db connection ............in ping")
+	// 	panic(err)
+	// }
 	fmt.Println("Successfully connected!............")
 	return db
 }
