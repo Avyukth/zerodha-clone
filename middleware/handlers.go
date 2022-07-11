@@ -12,6 +12,7 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
+	_ "github.com/lib/pq"
 )
 
 type response struct {
@@ -22,17 +23,20 @@ type response struct {
 func CreateConnection() *sql.DB {
 	err := godotenv.Load(".env")
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Fatalf("Error loading .env file")
 	}
 
-	db, err := sql.Open("postgres", os.Getenv("POSTGRES_URL"))
+	db, err := sql.Open("postgres", os.Getenv("POSTGRES_DSN_URL"))
 	if err != nil {
+		log.Fatal("Error getting db connection ............")
 		panic(err)
 	}
 	err = db.Ping()
 	if err != nil {
+		log.Fatal("Error getting db connection ............in ping")
 		panic(err)
 	}
+	fmt.Println("Successfully connected!............")
 	return db
 }
 
