@@ -27,34 +27,33 @@ func CreateConnection() *sql.DB {
 		dsn string
 		db  *sql.DB
 
-		user string  
-		password string  
-		host string  
-		port string  
-		DB string 
+		user     string
+		password string
+		host     string
+		port     string
+		DB       string
 	)
 	if db == nil {
 		if os.Getenv("ENV") == "PROD" {
-			user  = os.Getenv("POSTGRES_PROD_USER")
-			password  = os.Getenv("POSTGRES_PROD_PASSWORD")
-			host  = os.Getenv("POSTGRES_PROD_HOST")
-			port  =  os.Getenv("POSTGRES_PROD_PORT")
-			DB  = os.Getenv("POSTGRES_PROD_DB")
+			user = os.Getenv("POSTGRES_PROD_USER")
+			password = os.Getenv("POSTGRES_PROD_PASSWORD")
+			host = os.Getenv("POSTGRES_PROD_HOST")
+			port = os.Getenv("POSTGRES_PROD_PORT")
+			DB = os.Getenv("POSTGRES_PROD_DB")
 
 		} else {
 			err = godotenv.Load(".env")
 			if err != nil {
 				log.Fatalf("Error loading .env file")
 			}
-		user  = os.Getenv("POSTGRES_DEV_USER")
-		password  = os.Getenv("POSTGRES_DEV_PASSWORD")
-		host  = os.Getenv("POSTGRES_DEV_HOST")
-		port  =  os.Getenv("POSTGRES_DEV_PORT")
-		DB  = os.Getenv("POSTGRES_DEV_DB")
-
+			user = os.Getenv("POSTGRES_DEV_USER")
+			password = os.Getenv("POSTGRES_DEV_PASSWORD")
+			host = os.Getenv("POSTGRES_DEV_HOST")
+			port = os.Getenv("POSTGRES_DEV_PORT")
+			DB = os.Getenv("POSTGRES_DEV_DB")
 
 		}
-		dsn =  fmt.Sprintf("postgres://%v:%v@%v:%v/%v?sslmode=disable",user, password, host, port, DB)
+		dsn = fmt.Sprintf("postgres://%v:%v@%v:%v/%v?sslmode=disable", user, password, host, port, DB)
 
 		fmt.Println("Connecting to database... dsn Name ................", dsn)
 		db, err = sql.Open("postgres", dsn)
