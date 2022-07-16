@@ -20,12 +20,6 @@ services:
     image: postgres:14.1-alpine
     container_name: pgres-db
     restart: always
-    environment:
-      POSTGRES_USER: "gorm"
-      POSTGRES_PASSWORD: "gorm"
-      POSTGRES_DB: "gorm"
-    ports:
-      - "15432:5432"
     volumes:
       # When the PostgresSQL container is started it will run any scripts
       # provided in the `docker-entrypoint-initdb.d` directory, this connects

@@ -1,7 +1,7 @@
 
 
 FROM golang:1.18-alpine
-WORKDIR /app
+WORKDIR /usr/src/app
 ADD go.mod go.sum ./
 RUN go mod download
 COPY . .
