@@ -2,8 +2,9 @@ version: "3.7"
 
 services:
   app:
-    container_name: zerodhaapp
+    container_name: zerodha.service
     build: .
+    image: zerodha
     restart: on-failure
     depends_on:
       # Our app does not work without our database
