@@ -29,14 +29,14 @@ func CreateConnection() *sql.DB {
 	)
 	if db == nil {
 		if os.Getenv("ENV") == "PROD" {
-			dsn =os.Getenv("POSTGRES_PROD_DSN_URL")
+			dsn = os.Getenv("POSTGRES_PROD_DSN_URL")
 
 		} else {
 			err = godotenv.Load(".env")
 			if err != nil {
 				log.Fatalf("Error loading .env file")
 			}
-			dsn =os.Getenv("POSTGRES_DEV_DSN_URL")
+			dsn = os.Getenv("POSTGRES_DEV_DSN_URL")
 		}
 
 		fmt.Println("Connecting to database... dsn Name ................", dsn)
@@ -223,4 +223,8 @@ func deleteStock(id int64) int64 {
 	}
 	fmt.Printf("Total rows/records affected: %v", rowsAffected)
 	return rowsAffected
+}
+
+func Welcome(w http.ResponseWriter, r *http.Request) {
+	json.NewEncoder(w).Encode("Welcome to the Stock API")
 }
