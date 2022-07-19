@@ -11,5 +11,5 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY --from=builder /app/zerodha /app
 COPY --from=builder /app/*.env /app
-EXPOSE 8080
+EXPOSE 5000
 ENTRYPOINT ["./zerodha"]
