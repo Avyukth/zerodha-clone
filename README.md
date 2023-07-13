@@ -11,11 +11,19 @@ These instructions will get you a copy of the project up and running on your loc
 - Go (version 1.16 or higher recommended)
 - Gorilla Mux Go library
 
-### Installing
+### Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-1. Clone the repository to your local machine.
-2. Navigate to the project directory.
-3. Run the command `go run main.go` to start the server.
+Prerequisites
+Docker
+Docker Compose
+Installing
+Clone the repository to your local machine.
+Navigate to the project directory.
+You'll find a `docker-compose.yml` file, which is used to run the project in a Docker environment.
+Run the command `docker-compose up --build` to build and start the server and all its dependencies (PostgreSQL and PgAdmin).
+Docker Compose Services
+The `docker-compose.yml` file defines the following services:
 
 ## Endpoints
 
